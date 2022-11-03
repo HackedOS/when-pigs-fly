@@ -4,6 +4,9 @@ extends Sprite
 export var ceiling_y = 0.35
 """Fraction of the play area (from top) at which the depth 'ceiling' is, where the player can no longer navigate."""
 
+export(float, 0.1, 1.0) var min_persp_scaling
+export(float, 1.0, 3.0) var max_persp_scaling
+
 export var debug := false setget toggle_debug
 """Show debug play area constraints"""
 

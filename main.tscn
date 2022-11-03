@@ -22,7 +22,8 @@ texture = SubResource( 1 )
 centered = false
 script = ExtResource( 1 )
 ceiling_y = 0.4
-debug = true
+min_persp_scaling = 0.75
+max_persp_scaling = 1.75
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 428, 402 )

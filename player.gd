@@ -1,7 +1,7 @@
 class_name Player
 extends KinematicBody2D
 
-export var velocity_mult = 400.0
+export var velocity_mult = 300.0
 """Player movement multiplier"""
 
 export var play_area_path : NodePath = "PlayArea"
@@ -12,6 +12,8 @@ onready var _play_area = get_node(play_area_path) as PlayArea
 onready var _upper_limit_point = get_node("UpperLimitPoint")
 onready var _lower_limit_point = get_node("LowerLimitPoint")
 """Points that defines where the player 'hits their head' on play area constraints"""
+
+onready var _collision_box = get_node("CollisionShape2D")
 
 func _ready():
 	if _play_area == null:
@@ -38,4 +40,10 @@ func _physics_process(_delta):
 		
 		# Clamp horizontal movement too (for now just use player center
 		position.x = clamp(position.x, 0, _play_area.width_scaled)
+		
+		# Apply fake perspective scaling on player, based on distance to edges
+		var t = inverse_lerp(_play_area.get_ceiling_min_y(), _play_area.height_scaled, position.y)
+		var new_scale = lerp(_play_area.min_persp_scaling, _play_area.max_persp_scaling,t)
+		_collision_box.scale.x = new_scale
+		_collision_box.scale.y = new_scale
 		

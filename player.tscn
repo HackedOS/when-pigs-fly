@@ -18,6 +18,6 @@ position = Vector2( 0, -26 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="White" type="Sprite" parent="CollisionShape2D"]
+[node name="Sprite" type="Sprite" parent="CollisionShape2D"]
 scale = Vector2( 0.252747, 0.809917 )
 texture = ExtResource( 1 )
