@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://grey.png" type="Texture" id=1]
+
+[node name="Camera2D" type="Camera2D"]
+anchor_mode = 0
+
+[node name="Background" type="Sprite" parent="."]
+scale = Vector2( 4.49123, 4.6875 )
+texture = ExtResource( 1 )
+centered = false
