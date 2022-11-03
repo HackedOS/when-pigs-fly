@@ -1,19 +1,21 @@
 class_name Player
 extends KinematicBody2D
 
-export var velocity_mult = 300.0
+export var velocity_mult = 400.0
+"""Player movement multiplier"""
 
-# Get reference to gameplay area (for navigation purposes)
 export var play_area_path : NodePath = "PlayArea"
 onready var _play_area = get_node(play_area_path) as PlayArea
+"""Reference to gameplay area (for navigation purposes)"""
 
+# TODO: This could also be a single box
 onready var _upper_limit_point = get_node("UpperLimitPoint")
 onready var _lower_limit_point = get_node("LowerLimitPoint")
+"""Points that defines where the player 'hits their head' on play area constraints"""
 
 func _ready():
 	if _play_area == null:
 		push_warning("Player has no reference to play area. Out of bounds navigation is possible.")
-
 
 var velocity = Vector2.ZERO
 func _physics_process(_delta):
@@ -33,3 +35,7 @@ func _physics_process(_delta):
 		
 		# Apply lower limit (bottom of screen)
 		position.y = clamp(_lower_limit_point.global_position.y, 0, _play_area.height_scaled) - _lower_limit_point.position.y
+		
+		# Clamp horizontal movement too (for now just use player center
+		position.x = clamp(position.x, 0, _play_area.width_scaled)
+		

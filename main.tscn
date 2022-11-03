@@ -10,7 +10,9 @@ colors = PoolColorArray( 0.0588235, 0.160784, 0.27451, 1, 0.0745098, 0.27451, 0.
 gradient = SubResource( 2 )
 fill_to = Vector2( 0, 1 )
 
-[node name="Camera2D" type="Camera2D"]
+[node name="Root" type="Node2D"]
+
+[node name="MainCamera" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="PlayArea" type="Sprite" parent="."]
