@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Sprite",
+"class": "PlayArea",
+"language": "GDScript",
+"path": "res://play_area.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://player.gd"
+} ]
+_global_script_class_icons={
+"PlayArea": "",
+"Player": ""
+}
+
 [application]
 
 config/name="when pigs fly"

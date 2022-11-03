@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://play_area.gd" type="Script" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://player.gd" type="Script" id=3]
 
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 0.0588235, 0.160784, 0.27451, 1, 0.0745098, 0.27451, 0.490196, 1 )
@@ -13,11 +13,13 @@ fill_to = Vector2( 0, 1 )
 [node name="Camera2D" type="Camera2D"]
 anchor_mode = 0
 
-[node name="Background" type="Sprite" parent="."]
+[node name="PlayArea" type="Sprite" parent="."]
 scale = Vector2( 16, 9.375 )
 texture = SubResource( 1 )
 centered = false
+script = ExtResource( 1 )
+debug = true
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 200, 173 )
-script = ExtResource( 3 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 428, 402 )
+play_area_path = NodePath("../PlayArea")
