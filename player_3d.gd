@@ -53,4 +53,4 @@ func _process(_delta: float) -> void:
 	var max_shadow_growth_height := 5.0  # After reaching this height, shadow does not grow more
 	var t := translation.y / max_shadow_growth_height
 	shadow_sprite.scale = lerp(_shadow_init_scale, _shadow_init_scale * 1.2, t)
-
+	
