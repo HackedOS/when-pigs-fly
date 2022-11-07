@@ -14,6 +14,7 @@ export var gravity := 9.8
 
 # Keep ref to project it on ground
 onready var shadow_sprite := get_node("Sprite/Shadow") as Sprite3D
+onready var _shadow_init_scale := shadow_sprite.scale
 
 func _ready() -> void:
 	assert(shadow_sprite != null, "Shadow sprite is missing")
@@ -27,11 +28,16 @@ func _physics_process(delta):
 	_velocity.x *= _vel_horiz_mult
 	_velocity.z *= _vel_z_mult
 	
+	# TODO: We might need a better check, when moving we get y vel
+	# 		values of around 0.00001 instead of 0. But works for now
+	var is_grounded := abs(_velocity.y) < 0.0001 and \
+					   abs(global_translation.y) < 0.1 # prevent jump at apex
+	
 	# Apply gravity accel
 	_velocity.y -= gravity * delta
 	
 	# Handle jump press
-	if Input.is_action_just_pressed("jump"):
+	if is_grounded and Input.is_action_just_pressed("jump"):
 		_velocity.y = jump_vel
 	
 	# Move and keep velocity for next frame
@@ -42,4 +48,9 @@ func _process(_delta: float) -> void:
 	
 	# Doing this allows for parenting shadow to the player in the scene
 	shadow_sprite.global_translation.y = 0.0
+	
+	# Grow the shadow sprite, to simulate height
+	var max_shadow_growth_height := 5.0  # After reaching this height, shadow does not grow more
+	var t := translation.y / max_shadow_growth_height
+	shadow_sprite.scale = lerp(_shadow_init_scale, _shadow_init_scale * 1.2, t)
 
