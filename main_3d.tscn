@@ -25,7 +25,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 1.37413, 0 )
 texture = ExtResource( 2 )
 
 [node name="Shadow" type="Sprite3D" parent="Player/Sprite"]
-transform = Transform( 0.27647, 0, 0, 0, -2.18557e-08, -2, 0, 0.111852, -1.95569e-08, 0, -2.56131, -0.128759 )
+transform = Transform( 0.27647, 0, 0, 0, -2.18557e-08, -2, 0, 0.0990306, -1.73151e-08, 0, -2.56131, -0.865001 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
