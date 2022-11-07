@@ -1,4 +1,3 @@
-class_name Player
 extends KinematicBody2D
 
 export var velocity_mult = 300.0
