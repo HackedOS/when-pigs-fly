@@ -1,4 +1,4 @@
-extends Path
+extends Node
 
 export var pointsDistanceFromEnemy = 2
 var _patrolPoints = []

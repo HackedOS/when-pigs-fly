@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Sprite",
 "class": "PlayArea",
 "language": "GDScript",
-"path": "res://Scripts/Player/play_area.gd"
+"path": "res://Scripts/play_area.gd"
 }, {
 "base": "KinematicBody",
 "class": "Player",

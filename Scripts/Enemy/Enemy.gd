@@ -7,7 +7,7 @@ signal deal_damage(damageAmmount)
 """ Node References """
 onready var _collider := get_node("CollisionShape")
 onready var _player := get_parent().get_node("Player")
-onready var _path := get_node("Path")
+onready var _path := get_node("Node")
 
 """"" Mevement variables """
 export var _chaseSpeed = 40
