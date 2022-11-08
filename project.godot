@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Enemy/Enemy.gd"
 }, {
+"base": "HBoxContainer",
+"class": "MenuCallbacks",
+"language": "GDScript",
+"path": "res://menu_callbacks.gd"
+}, {
 "base": "Sprite",
 "class": "PlayArea",
 "language": "GDScript",
@@ -26,6 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Enemy": "",
+"MenuCallbacks": "",
 "PlayArea": "",
 "Player": ""
 }
@@ -33,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="when pigs fly"
-run/main_scene="res://main_3d.tscn"
+run/main_scene="res://main_menu.tscn"
 
 [display]
 
