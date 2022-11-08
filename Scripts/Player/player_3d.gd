@@ -43,6 +43,9 @@ func _physics_process(delta):
 	# Move and keep velocity for next frame
 	_velocity = move_and_slide(_velocity)
 	
+	if Input.is_action_pressed("Pause"):
+		get_tree().change_scene("res://HUD/PauseMenu.tscn")
+	
 	
 func _process(_delta: float) -> void:
 	
