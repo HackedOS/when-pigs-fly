@@ -2,7 +2,7 @@ class_name Enemy
 extends KinematicBody
 
 """ Signals """
-signal take_damage
+signal deal_damage(damageAmmount)
 
 """ Node References """
 onready var _collider := get_node("CollisionShape")
@@ -50,9 +50,13 @@ func _Idling(delta):
 		if translation.distance_to(_targetWaypoint) > 0.1:
 			move_and_slide(_moveDirection * patrolSpeed * delta)
 		else:
-			currentWaypoint += 1
-			currentWaypoint %= _path._patrolPoints.size()
-			_targetWaypoint = _path._patrolPoints[currentWaypoint]
+			_path._WaitFor(delta, 2)
+			
+			if _path.timerEnded == true:
+				_path.timerEnded = false
+				currentWaypoint += 1
+				currentWaypoint %= _path._patrolPoints.size()
+				_targetWaypoint = _path._patrolPoints[currentWaypoint]
 	
 func _CheckForPlayer():
 	if PlayerDetected == false:
@@ -66,7 +70,7 @@ func _Chasing(delta):
 		_moveDirection = (_player.translation - translation).normalized()
 		move_and_slide(_moveDirection * _chaseSpeed * delta)
 	else:
-		print("stop chasing")
 		PlayerDetected = false
 		_targetWaypoint = _path._patrolPoints[currentWaypoint]
 		state = EnemyState.Idle
+
