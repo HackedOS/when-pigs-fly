@@ -77,10 +77,11 @@ func _CheckForPlayer():
 			state = EnemyState.Attacking
 
 func _GroundCheck():
-	if is_on_floor():
-		IsGrounded = true
-	else:
-		move_and_slide(Vector3.UP * GRAVITY, Vector3.UP)
+	if IsGrounded == false:
+		if is_on_floor():
+			IsGrounded = true
+		else:
+			move_and_slide(Vector3.UP * GRAVITY, Vector3.UP)
 
 func _Chasing(delta):
 	if translation.distance_to(_player.translation) < _chaseAreaRadius:
