@@ -5,8 +5,9 @@ var _patrolPoints = []
 
 var _timer: float = 0
 var timerEnded: bool = false
+var routeCreated: bool = false
 
-func _ready():
+func CreatePatrolRoute():
 	_patrolPoints.append(
 		Vector3(rand_range(get_parent().global_translation.x - pointsDistanceFromEnemy, get_parent().global_translation.x), 
 		get_parent().global_translation.y, get_parent().global_translation.z))
@@ -14,8 +15,9 @@ func _ready():
 	_patrolPoints.append(
 		Vector3(rand_range(get_parent().global_translation.x, get_parent().global_translation.x + pointsDistanceFromEnemy), 
 		get_parent().global_translation.y, get_parent().global_translation.z))
-		
-func _WaitFor(delta: float, cooldownTime: float) -> void:
+	routeCreated = true
+	
+func WaitFor(delta: float, cooldownTime: float) -> void:
 	if timerEnded == false:
 		_timer += delta
 		

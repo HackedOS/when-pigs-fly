@@ -31,5 +31,5 @@ texture = ExtResource( 1 )
 transform = Transform( 2.815, 0, 0, 0, 3.322, 0, 0, 0, 0.7, 0, 1.394, 0 )
 shape = SubResource( 3 )
 
-[node name="Node" type="Node" parent="."]
+[node name="Path" type="Node" parent="."]
 script = ExtResource( 2 )
