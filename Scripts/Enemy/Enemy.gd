@@ -19,6 +19,7 @@ var currentWaypoint: int = 0
 """ Combat Variables """
 export var _detectRadius: float = 5
 export var _chaseAreaRadius: float = 5
+export var _attackRange: float = 1
 export var _damage: float = 5
 var IsDead: bool = false
 var PlayerDetected: bool = false
@@ -41,7 +42,7 @@ func _physics_process(delta):
 			EnemyState.Chasing:
 				_Chasing(delta)
 			EnemyState.Attacking:
-				pass
+				_Attack()
 
 func _Idling(delta):
 	if PlayerDetected == false:
@@ -63,6 +64,9 @@ func _CheckForPlayer():
 		if translation.distance_to(_player.translation) <= _detectRadius:
 			PlayerDetected = true
 			state = EnemyState.Chasing
+	else:
+		if translation.distance_to(_player.translation) <= _attackRange:
+			state = EnemyState.Attacking
 	
 func _Chasing(delta):
 	if translation.distance_to(_player.translation) < _chaseAreaRadius:
@@ -74,3 +78,5 @@ func _Chasing(delta):
 		_targetWaypoint = _path._patrolPoints[currentWaypoint]
 		state = EnemyState.Idle
 
+func _Attack():
+	emit_signal("deal_damage", _damage)

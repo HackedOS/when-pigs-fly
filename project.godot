@@ -17,12 +17,12 @@ _global_script_classes=[ {
 "base": "Sprite",
 "class": "PlayArea",
 "language": "GDScript",
-"path": "res://play_area.gd"
+"path": "res://Scripts/Player/play_area.gd"
 }, {
 "base": "KinematicBody",
 "class": "Player",
 "language": "GDScript",
-"path": "res://player_3d.gd"
+"path": "res://Scripts/Player/player_3d.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
@@ -34,7 +34,6 @@ _global_script_class_icons={
 
 config/name="when pigs fly"
 run/main_scene="res://main_3d.tscn"
-config/icon="res://icon.png"
 
 [display]
 
